@@ -8,7 +8,7 @@ using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
 /// <summary>
-/// 这是一个演示，用于在Dialog脚本选中特定轨道时，预先赋值
+/// 这是一个演示，用于在Dialog脚本选中特定轨道时，预先进行赋值
 /// </summary>
 public static class TimelineSelectExtension
 {
