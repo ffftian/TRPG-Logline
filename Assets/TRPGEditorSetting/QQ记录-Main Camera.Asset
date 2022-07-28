@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff32d8c877a06d945bd88a456108e427, type: 3}
+  m_Name: "QQ\u8BB0\u5F55-Main Camera"
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: RecordDict
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 13
+    - Name: $v
+      Entry: 1
+      Data: "{\r\n  \"m_LocalPosition.x\": 0.0,\r\n  \"m_LocalPosition.y\": 0.0,\r\n 
+        \"m_LocalPosition.z\": 0.0\r\n}"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 15
+    - Name: $v
+      Entry: 1
+      Data: "{\r\n  \"orthographic\": 0.0,\r\n  \"m_LocalPosition.x\": 25.0,\r\n 
+        \"m_LocalPosition.y\": 2.0,\r\n  \"m_LocalPosition.z\": 0.0,\r\n  \"field
+        of view\": 45.0,\r\n  \"orthographic size\": 3.0,\r\n  \"localEulerAnglesRaw.x\":
+        0.0,\r\n  \"localEulerAnglesRaw.y\": 0.0,\r\n  \"localEulerAnglesRaw.z\":
+        0.0\r\n}"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 17
+    - Name: $v
+      Entry: 1
+      Data: "{\r\n  \"m_LocalPosition.x\": 3.46999931,\r\n  \"m_LocalPosition.y\":
+        0.0,\r\n  \"m_LocalPosition.z\": 0.0\r\n}"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 20
+    - Name: $v
+      Entry: 1
+      Data: "{\r\n  \"m_LocalPosition.x\": 0.0,\r\n  \"m_LocalPosition.y\": 0.0,\r\n 
+        \"m_LocalPosition.z\": -30.0\r\n}"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
