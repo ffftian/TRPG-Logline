@@ -35,9 +35,6 @@ namespace Dice
         /// <returns></returns>
         public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
         {
-            //template.timelineClip = this.timelineClip;
-            //return Playable.Null;
-
             ScriptPlayable<DiceBehaviour> playable = ScriptPlayable<DiceBehaviour>.Create(graph, template);
             return playable;
         }

@@ -16,7 +16,17 @@ namespace Dice
         public int diceRange = 99;
         public int playSkillValue;
         public RectTransform diceTrans;
+        public Image diceImage;
         public Text diceText;
+        public float alpha
+        {
+            set
+            {
+                diceImage.color = new Color(diceImage.color.r, diceImage.color.g, diceImage.color.b,value);
+                diceText.color = new Color(diceText.color.r, diceText.color.g, diceText.color.b, value);
+            }
+        }
+  
 
         public void Show()
         {
@@ -40,19 +50,9 @@ namespace Dice
             int value = UnityEngine.Random.Range(0, diceRange);
             diceText.text = $"{value}/{playSkillValue}";
             diceText.color = Color.black;
-
             float x =  Mathf.Cos(shake) + Mathf.Sin(shake);
             float y = -Mathf.Sin(shake) + Mathf.Cos(shake);
-
-
             diceTrans.anchoredPosition = new Vector2(x, y)* shake* strength;
-
-
-            //晃动
-
-
-            //diceTrans.anchoredPosition = new Vector2(UnityEngine.Random.Range(-shake, shake), UnityEngine.Random.Range(-shake, shake));
-
         }
         public void Finish(int finishValue)
         {

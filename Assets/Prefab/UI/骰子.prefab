@@ -139,6 +139,7 @@ MonoBehaviour:
   diceRange: 99
   playSkillValue: 0
   diceTrans: {fileID: 4295256423867068393}
+  diceImage: {fileID: 2705717939681086858}
   diceText: {fileID: 2862192522054108070}
 --- !u!1 &2862192522054108068
 GameObject:

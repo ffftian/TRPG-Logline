@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
+using UnityEngine.UI;
 
 namespace Dice
 {
@@ -14,27 +15,28 @@ namespace Dice
     [TrackBindingType(typeof(Dice))]
     public class DiceTrack : TrackAsset
     {
-        public int 轨道数值;
+        public ExposedReference<Image> mask;
+        protected override Playable CreatePlayable(PlayableGraph graph, GameObject gameObject, TimelineClip clip)
+        {
+            ScriptPlayable<DiceBehaviour> dice = (ScriptPlayable<DiceBehaviour>)(base.CreatePlayable(graph, gameObject, clip));
+            DiceBehaviour diceBehaviour = dice.GetBehaviour();
+            diceBehaviour.mask = mask.Resolve(graph.GetResolver());
+            return dice;
+        }
 
-
-
-
-
-        /// <summary>
-        /// 只要置入一个Cilp，都会触发一次，混合可能是会额外创建轨道的，不要写
-        /// </summary>
-        /// <param name="graph"></param>
-        /// <param name="go"></param>
-        /// <param name="inputCount"></param>
-        /// <returns></returns>
-        //public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int inputCount)
+        //protected override Playable CreatePlayable(PlayableGraph graph, GameObject gameObject, TimelineClip clip)
         //{
-        //    //他的默认调用就是   return Playable.Create(graph, inputCount);
-           
-        //    var scriptPlayable = ScriptPlayable<DiceBehaviour>.Create(graph, inputCount);
-
+        //    ScriptPlayable<DiceBehaviour> scriptPlayable = ScriptPlayable<DiceBehaviour>.Create(graph);
+        //    DiceBehaviour dice = scriptPlayable.GetBehaviour();
+        //    dice.mask = mask.Resolve(graph.GetResolver());
+        //    dice.mask.color = value;
         //    return scriptPlayable;
+        //    //return base.CreatePlayable(graph, gameObject, clip);
         //}
 
+        //public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int inputCount)
+        //{
+
+        //}
     }
 }
