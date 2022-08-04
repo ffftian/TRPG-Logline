@@ -34,13 +34,27 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 3
       Data: 14
+    - Name: $v
+      Entry: 1
+      Data: "{\r\n  \"m_LocalPosition.x\": 3.86,\r\n  \"m_LocalPosition.y\": 1.58,\r\n 
+        \"m_LocalPosition.z\": 0.0,\r\n  \"m_LocalScale.x\": 0.25,\r\n  \"m_LocalScale.y\":
+        0.25,\r\n  \"m_LocalScale.z\": 0.5\r\n}"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 16
     - Name: $v
       Entry: 1
       Data: "{\r\n  \"m_LocalPosition.x\": 3.86,\r\n  \"m_LocalPosition.y\": 1.58,\r\n 

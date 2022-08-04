@@ -8,8 +8,6 @@ using UnityEngine.UI;
 
 namespace Dice
 {
-
-
     public class Dice : MonoBehaviour
     {
         [Range(0, 99)]

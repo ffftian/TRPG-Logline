@@ -26,14 +26,14 @@ namespace Dice
         public int finishValue = 50;
 
         [Tooltip("骰子执行投掷时的晃动幅度,可以通过点击小轨道符号来按曲线定义shake在timeline中的强度")]
-        public float shake = 10f;
+        public float shake = 10;
         [Tooltip("晃动强度比值")]
         public float strength = 1f;
         /// <summary>
         /// 在多少间隔前
         /// </summary>
         [Tooltip("多少值前显示完成比值")]
-        public int ShowfinishValueOffSet = 1;
+        public int ShowfinishValueOffSet = 5;
         /// <summary>
         /// 间隔多少时间刷新一次骰子数值
         /// </summary>
