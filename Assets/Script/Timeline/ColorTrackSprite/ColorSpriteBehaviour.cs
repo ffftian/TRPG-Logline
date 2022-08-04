@@ -34,6 +34,8 @@ namespace Miao
             float Progress = (float)(playable.GetTime() / playable.GetDuration());
 
 
+
+
             switch (darkType)
             {
                 case ProcessType.淡入:
