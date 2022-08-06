@@ -11,16 +11,16 @@ using UnityEngine.UI;
 namespace Dice
 {
     [TrackColor(0.6f, 0.2f, 0.2f)]
-    [TrackClipType(typeof(DiceClip))]//Clip = PlayableAsset
+    [TrackClipType(typeof(DiceRandomClip))]//Clip = PlayableAsset
     [TrackBindingType(typeof(Dice))]
     public class DiceTrack : TrackAsset
     {
-        public ExposedReference<Image> mask;
+        //public ExposedReference<Image> mask;
         protected override Playable CreatePlayable(PlayableGraph graph, GameObject gameObject, TimelineClip clip)
         {
-            ScriptPlayable<DiceBehaviour> dice = (ScriptPlayable<DiceBehaviour>)(base.CreatePlayable(graph, gameObject, clip));
-            DiceBehaviour diceBehaviour = dice.GetBehaviour();
-            diceBehaviour.mask = mask.Resolve(graph.GetResolver());
+            ScriptPlayable<DiceRandomBehaviour> dice = (ScriptPlayable<DiceRandomBehaviour>)(base.CreatePlayable(graph, gameObject, clip));
+            DiceRandomBehaviour diceBehaviour = dice.GetBehaviour();
+            //diceBehaviour.mask = mask.Resolve(graph.GetResolver());
             return dice;
         }
 

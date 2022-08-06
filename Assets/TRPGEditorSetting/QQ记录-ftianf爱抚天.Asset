@@ -34,7 +34,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 8
+      Data: 4
     - Name: 
       Entry: 7
       Data: 
@@ -45,48 +45,6 @@ MonoBehaviour:
       Entry: 1
       Data: "{\r\n  \"m_LocalPosition.x\": -6.0,\r\n  \"m_LocalPosition.y\": 0.0,\r\n 
         \"m_LocalPosition.z\": 0.0\r\n}"
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 8
-    - Name: $v
-      Entry: 1
-      Data: "{\r\n  \"m_LocalPosition.x\": -6.0,\r\n  \"m_LocalPosition.y\": 0.0,\r\n 
-        \"m_LocalPosition.z\": 0.0\r\n}"
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 14
-    - Name: $v
-      Entry: 1
-      Data: "{\r\n  \"m_LocalPosition.x\": 0.0,\r\n  \"m_LocalPosition.y\": 3.0,\r\n 
-        \"m_LocalPosition.z\": 0.0,\r\n  \"m_LocalScale.x\": 0.7,\r\n  \"m_LocalScale.y\":
-        0.7,\r\n  \"m_LocalScale.z\": 1.0\r\n}"
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 15
-    - Name: $v
-      Entry: 1
-      Data: "{\r\n  \"m_LocalPosition.x\": 31.02,\r\n  \"m_LocalPosition.y\": 1.35,\r\n 
-        \"m_LocalPosition.z\": -2.77,\r\n  \"m_LocalScale.x\": 0.4,\r\n  \"m_LocalScale.y\":
-        0.4,\r\n  \"m_LocalScale.z\": 1.0,\r\n  \"localEulerAnglesRaw.x\": 90.0,\r\n 
-        \"localEulerAnglesRaw.y\": 0.0,\r\n  \"localEulerAnglesRaw.z\": 0.0\r\n}"
     - Name: 
       Entry: 8
       Data: 
@@ -116,19 +74,6 @@ MonoBehaviour:
         \"m_LocalPosition.z\": -2.77,\r\n  \"m_LocalScale.x\": 0.4,\r\n  \"m_LocalScale.y\":
         0.4,\r\n  \"m_LocalScale.z\": 1.0,\r\n  \"localEulerAnglesRaw.x\": 90.0,\r\n 
         \"localEulerAnglesRaw.y\": 0.0,\r\n  \"localEulerAnglesRaw.z\": 0.0\r\n}"
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 20
-    - Name: $v
-      Entry: 1
-      Data: "{\r\n  \"m_LocalPosition.x\": 3.619999,\r\n  \"m_LocalPosition.y\":
-        0.0,\r\n  \"m_LocalPosition.z\": 0.0\r\n}"
     - Name: 
       Entry: 8
       Data: 

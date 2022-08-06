@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,16 +7,16 @@ using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using UnityEngine.UI;
 
+
 namespace Miao
 {
-    [TrackColor(0.45f, 0.2f, 0.2f)]
-    [TrackBindingType(typeof(CanvasGroup))]
-    [TrackClipType(typeof(CanvasGroupClip))]
-    public class CanvasGroupTrack : TrackAsset
+    [TrackBindingType(typeof(Color))]
+    [TrackClipType(typeof(ColorBehaviour))]
+    abstract public class ColorTrack : TrackAsset
     {
         public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int inputCount)
         {
-            return ScriptPlayable<CanvasGroupMixBehaviour>.Create(graph, inputCount);
+            return ScriptPlayable<ColorMixBehaviour>.Create(graph, inputCount);
         }
     }
 }

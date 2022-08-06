@@ -9,17 +9,17 @@ using UnityEngine.Timeline;
 
 namespace Miao
 {
-    public class CanvasGroupClip : PlayableAsset, ITimelineClipAsset
+    public class ColorClip : PlayableAsset, ITimelineClipAsset
     {
-        public CanvasGroupBehaviour template;
-        public float alpha = 1;
-
+        public ColorBehaviour template;
+        public Color color = Color.white;
         public ClipCaps clipCaps => ClipCaps.Blending;
         public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
         {
-            var playable = ScriptPlayable<CanvasGroupBehaviour>.Create(graph, template);
-            playable.GetBehaviour().alpha= alpha;
+            var playable = ScriptPlayable<ColorBehaviour>.Create(graph, template);
+            playable.GetBehaviour().color = color;
             return playable;
         }
     }
 }
+

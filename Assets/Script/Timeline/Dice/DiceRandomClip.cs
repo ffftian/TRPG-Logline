@@ -9,18 +9,18 @@ using UnityEngine.Timeline;
 
 namespace Dice
 {
-    public class DiceClip : PlayableAsset, ITimelineClipAsset//Asset
+    public class DiceRandomClip : PlayableAsset, ITimelineClipAsset//Asset
     {
         //这个就是节点最大可用长度
-        public override double duration
-        {
-            get
-            {
-                return template.duration;
-            }
-        }
+        //public override double duration
+        //{
+        //    get
+        //    {
+        //        return template.duration;
+        //    }
+        //}
 
-        [SerializeField] public DiceBehaviour template;
+        [SerializeField] public DiceRandomBehaviour template;
         [SerializeField] public bool loop = true;
 
         public ClipCaps clipCaps => ClipCaps.ClipIn | (loop ? ClipCaps.Looping : ClipCaps.None);
@@ -35,7 +35,7 @@ namespace Dice
         /// <returns></returns>
         public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
         {
-            ScriptPlayable<DiceBehaviour> playable = ScriptPlayable<DiceBehaviour>.Create(graph, template);
+            ScriptPlayable<DiceRandomBehaviour> playable = ScriptPlayable<DiceRandomBehaviour>.Create(graph, template);
             return playable;
         }
 

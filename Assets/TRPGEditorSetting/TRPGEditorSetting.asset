@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TRPGEditorSetting
   m_EditorClassIdentifier: 
   QQMessageAsset: {fileID: 11400000, guid: 478fcca316b4721438d7f8a3e8a04c7c, type: 2}
-  messageListRange: {x: 0, y: 16}
+  messageListRange: {x: 0, y: 15}
   UseDefaultName: 1
   SpineAssetName: 
   IgnoreName: []
