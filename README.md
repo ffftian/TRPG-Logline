@@ -1,13 +1,17 @@
 # TRPG-Logline
-（教程未完成，逐渐撰写中）
+（教程未完成，随时会更新中）
 TRPG-Logline是一款革命性的Unity插件，用于骨骼动画跑团视频的制作演出。
 spine运行库版本为4.1，所操作的版本为Unity 2021.3.6f1。  
 本教程建议对Unity基础操作有了解。
+<p align="center">
+<img src="Assets/TRPGEditorSetting/TRPG Logline log.png">
+</p>
 
 # 目录
 - [TRPG-Logline](#trpg-logline)
 - [目录](#目录)
 - [导入](#导入)
+- [使用](#使用)
 - [工程配置](#工程配置)
 - [编辑器操作](#编辑器操作)
 - [时间线(Timeline)相关](#时间线timeline相关)
@@ -18,8 +22,31 @@ spine运行库版本为4.1，所操作的版本为Unity 2021.3.6f1。
   - [添加扩展轨道脚本](#添加扩展轨道脚本)
 
 # 导入
+下载 https://github.com/ffftian/TextToSpeech   
+<img src="docs/TextToSpeech.png">
+并根据该软件说明录制/生成对应命名规范音频。将生成的音频和QQ记录log根据[工程配置](#工程配置)摆放在对应位置。
+下载Unity对应版本，打开工程文件。   
+工具栏中点击《QQ文本编辑器\TXT转QQMeesageAsset》拖拽您的记录放置在内，点击转换。   
+<img src="docs/1.png">   
+工具栏中点击《QQ文本编辑器\QQLogTimeline生成器》
+<img src="docs/2.png">将生成的log拖入进QQMessageData。
+拖动[MessageListRanage]指定生成范围。
+点击[刷新消息资源显示]，可以看到MessageList将显示范围内对话。
+每一句段落都将生成一段轨道片段，已生成轨道片段将跳过。
+点击[根据范围创建Timeline]
+如果一切顺利，生成段落的位置为Resources/QQTimeLine/<文件名>。您将在该文件夹中看到资源数据。
 
-
+# 使用
+Assets\Scenes文件夹点击模板场景   
+点击场景中ShowComponent(剧本控制)   
+从Assets\AssetDialouge中拖入文件到Message Asset   
+点击文本条下的文本向左或向右，UseTimelineAsset将自动被赋值。
+创建一个带有SkeletonAnimaiton的角色预制体。
+将预制体角色拖拽到RoleGroup下.
+<img src="docs/3.png">。
+<img src="docs/4.png">。   
+双击UseTimeLineAsset 中的对象。如果一切正常Timeline编辑器将被唤出，并且您的骨骼动画文件也将被自动置入到轨道上，口型也自动生成。您就可以开始播放并使用了。
+<img src="docs/5.png">。
 
 # 工程配置
 未提及目录则无需操作上的注意。  
