@@ -160,7 +160,7 @@ public class QQLogTimelineOdinEditorWindow : OdinEditorWindow
             {
                 if(额外TimeLine脚本[j].enable)
                 {
-                    额外TimeLine脚本[j].methodInfo.Invoke(null, new object[] { spineAssetName,timelineAsset });
+                    额外TimeLine脚本[j].methodInfo.Invoke(null, new object[] { spineAssetName,timelineAsset, messageList[i] });
                 }
             }
         }

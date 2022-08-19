@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: "QQ\u8BB0\u5F55"
   m_EditorClassIdentifier: 
   messageDataList:
+  - ID: "2022-07-10 22:53:00 ftianf\u7231\u629A\u5929(790947404)"
+    QQ: 790947404
+    roleName: "ftianf\u7231\u629A\u5929"
+    log: "\"\u8FD9\u662F\u4E00\u6BB5\u6211\u8BF4\u7684\u5BF9\u8BDD\"aaaaaaaaaaaaaaaa\"\u8FD9\u4E5F\u662F\u5BF9\u8BDD\u3002\"aaaaaaaaab.\u3002\u201C\u8FD9\u5BF9\u8BDD\u201Dbbbbbbbbbbbbbbbbbbbbbb\u201C\u8BDD\"\n\n\n"
+    dateTime: '2022-07-10 22:53:00 '
+    fileID: "2022-07-10225300ftianf\u7231\u629A\u5929(790947404)"
   - ID: "2022-07-11 22:53:00 ftianf\u7231\u629A\u5929(790947404)"
     QQ: 790947404
     roleName: "ftianf\u7231\u629A\u5929"

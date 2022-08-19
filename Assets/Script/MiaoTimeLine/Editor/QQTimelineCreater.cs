@@ -68,7 +68,7 @@ namespace Miao
             #endregion
             #region 音频与嘴型处理
             string audioPath = $@"{DialogueDirectiory}\{SpeakAssetName}{SpeakFormat}";
-            float ClipLegth = 0;
+            float clipLength = 0;
 
             AudioClip Speak = AssetDatabase.LoadAssetAtPath<AudioClip>(audioPath);
             if (Speak != null)
@@ -93,7 +93,7 @@ namespace Miao
                     CacheMouthGroups.Add(MouthReferenceAssetsPath, group);
                 }
                 LipTrackExtension.ProcessLipAmplitudePro(ref spineMouthTrack, group, Speak, SectionLength, ChangeMouthThreshold);
-                ClipLegth = Speak.length;
+                clipLength = Speak.length;
             }
             else
             {
@@ -105,21 +105,21 @@ namespace Miao
             DialogueControlClip clipResource = (DialogueControlClip)clip.asset;
             clipResource.template.dialogue = Dialogue;
             clip.displayName = timelineName;
-            if (ClipLegth != 0)
+            if (clipLength != 0)
             {
-                clip.duration = ClipLegth;
+                clip.duration = clipLength;
             }
             else
             {
-                ClipLegth = Dialogue.Length * 0.12f;
-                clip.duration = ClipLegth;
+                clipLength = Dialogue.Length * 0.12f;
+                clip.duration = clipLength;
             }
             #endregion
             #region 动画处理
             AnimationReferenceAsset body = AssetDatabase.LoadAssetAtPath<AnimationReferenceAsset>($@"{SpineDirectiory}\{SpineAssetName}\ReferenceAssets\Idle.asset");
             if (body != null)
             {
-                SpineAnimationStateClip spineClip = InputStateTrack(ref spineBodyTrack, body, ClipLegth);
+                SpineAnimationStateClip spineClip = InputStateTrack(ref spineBodyTrack, body, clipLength);
                 spineClip.template.loop = true;
             }
             else
