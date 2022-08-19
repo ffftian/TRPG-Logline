@@ -13,11 +13,13 @@ public class BaseTimeLineClip<T> : PlayableAsset, ITimelineClipAsset where T : c
 {
     [SerializeField] public T template;
     virtual public ClipCaps clipCaps => ClipCaps.None;
-
+    
     public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
     {
+        
         return ScriptPlayable<T>.Create(graph, template);
     }
+    
 
 }
 

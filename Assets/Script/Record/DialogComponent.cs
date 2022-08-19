@@ -55,9 +55,9 @@ public class DialogComponent : MonoBehaviour
 
     public void Start()
     {
-        //#if !UNITY_EDITOR
-        //serialPtr = 0;
-        //#endif
+#if !UNITY_EDITOR
+        serialPtr = 0;
+#endif
         SetNameText(messageAsset.messageDataList[serialPtr].roleName);
         MessageRuning();
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using UnityEngine.UI;
 
@@ -14,6 +15,9 @@ namespace Miao
     [TrackClipType(typeof(CanvasGroupClip))]
     public class CanvasGroupTrack : TrackAsset
     {
-
+        public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int inputCount)
+        {
+            return ScriptPlayable<CanvasGroupMixBehaviour>.Create(graph, inputCount);
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace Miao
 
     [TrackColor(0.2f, 0.2f, 0.2f)]
     [TrackBindingType(typeof(SpriteRenderer))]
-    [TrackClipType(typeof(ColorSpriteClip))]
+    [TrackClipType(typeof(ColorClip))]
     public class ColorSpriteTrack : TrackAsset
     {
 
