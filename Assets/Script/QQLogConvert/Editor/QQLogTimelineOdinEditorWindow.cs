@@ -52,7 +52,7 @@ public class QQLogTimelineOdinEditorWindow : OdinEditorWindow
     [HideIf("使用默认角色名索引的SpineAsset")]
     public string 索引的SpineAsset名称;
     [Tooltip("不想生成动画轨道的名称，像kp/dm/围观者等没主要实体者使用")]
-    public string[] 需忽略的QQ昵称;
+    public string[] 忽略生成的QQ昵称;
 
     [TableList(ShowIndexLabels = true,IsReadOnly = true)]
     public List<MethodData> 额外TimeLine脚本;
@@ -150,7 +150,7 @@ public class QQLogTimelineOdinEditorWindow : OdinEditorWindow
         for (int i = 0; i < messageList.Count; i++)
         {
             string spineAssetName = 使用默认角色名索引的SpineAsset ? messageList[i].roleName : 索引的SpineAsset名称;
-            if (需忽略的QQ昵称.Contains(messageList[i].roleName))
+            if (忽略生成的QQ昵称.Contains(messageList[i].roleName))
             {
                 spineAssetName = null;
             }
@@ -205,7 +205,7 @@ public class QQLogTimelineOdinEditorWindow : OdinEditorWindow
         }
         使用默认角色名索引的SpineAsset = settings.UseDefaultName;
         索引的SpineAsset名称 = settings.SpineAssetName;
-        需忽略的QQ昵称 = settings.IgnoreName;
+        忽略生成的QQ昵称 = settings.IgnoreName;
         //TimeLineExtension = settings.TimeLineExtension;
         //CameraFocusRole = settings.CameraFocusRole;
     }
@@ -222,7 +222,7 @@ public class QQLogTimelineOdinEditorWindow : OdinEditorWindow
         //}
         settings.UseDefaultName = 使用默认角色名索引的SpineAsset;
         settings.SpineAssetName = 索引的SpineAsset名称;
-        settings.IgnoreName = 需忽略的QQ昵称;
+        settings.IgnoreName = 忽略生成的QQ昵称;
 
         settings.extendMethodInfos = 额外TimeLine脚本.Select(v => v.enable).ToList();
 
