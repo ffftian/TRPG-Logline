@@ -24,9 +24,6 @@ namespace Dice
         [SerializeField] public bool loop = true;
 
         public ClipCaps clipCaps => ClipCaps.ClipIn | (loop ? ClipCaps.Looping : ClipCaps.None);
-
-        
-
         /// <summary>
         /// 创建时可以改为创建Playable的
         /// </summary>
