@@ -43,7 +43,7 @@ namespace Miao
         /// <param name="SpineAssetName=骨骼动画所在名称"></param>
         /// <param name="SpeakAssetName=嘴型资源所在名称"></param>
         /// <param name="SpeakFormat"></param>
-        public TimelineAsset CreateMessageTimeLine(string timelineName, string Dialogue, string SpineAssetName, string SpeakAssetName,float SectionLength,int ChangeMouthThreshold, string SpeakFormat = ".wav")
+        public TimelineAsset CreateMessageTimeLine(string timelineName, string Dialogue, string SpineAssetName, string SpeakAssetName, float SectionLength, int ChangeMouthThreshold, string SpeakFormat = ".wav")
         {
             if (File.Exists($@"{saveDirectory}\{timelineName}.playable"))
             {
@@ -54,17 +54,26 @@ namespace Miao
             AssetDatabase.CreateAsset(timelineAsset, $@"{saveDirectory}\{timelineName}.playable");
             //先创建资源到本地，AssetDatabase源码里有检测资源函数，不这样他不会写到本地。
             #region 创建资源
-            SpineAnimationStateTrack spineBodyTrack = timelineAsset.CreateTrack<SpineAnimationStateTrack>("Spine Body");//身体
-            SpineAnimationStateTrack spineSpecialTrack = timelineAsset.CreateTrack<SpineAnimationStateTrack>("Spine Special");//特殊操作
-            SpineAnimationStateTrack spineFaceTrack = timelineAsset.CreateTrack<SpineAnimationStateTrack>("Spine Face");//脸
-            SpineAnimationStateTrack spineMouthTrack = timelineAsset.CreateTrack<SpineAnimationStateTrack>("Spine Lip");//嘴 
-            spineBodyTrack.trackIndex = 0;
-            spineSpecialTrack.trackIndex = 1;
-            spineFaceTrack.trackIndex = 2;
-            spineMouthTrack.trackIndex = 3;
+            SpineAnimationStateTrack spineBodyTrack = null;
+            SpineAnimationStateTrack spineSpecialTrack = null;
+            SpineAnimationStateTrack spineFaceTrack = null;
+            SpineAnimationStateTrack spineMouthTrack = null;
+            if (!string.IsNullOrEmpty(SpineAssetName))
+            {
+                spineBodyTrack = timelineAsset.CreateTrack<SpineAnimationStateTrack>("Spine Body");//身体
+                spineSpecialTrack = timelineAsset.CreateTrack<SpineAnimationStateTrack>("Spine Special");//特殊操作
+                spineFaceTrack = timelineAsset.CreateTrack<SpineAnimationStateTrack>("Spine Face");//脸
+                spineMouthTrack = timelineAsset.CreateTrack<SpineAnimationStateTrack>("Spine Lip");//嘴 
+                spineBodyTrack.trackIndex = 0;
+                spineSpecialTrack.trackIndex = 1;
+                spineFaceTrack.trackIndex = 2;
+                spineMouthTrack.trackIndex = 3;
+            }
+
             DialogueControlTrack dialogueControlTrack = timelineAsset.CreateTrack<DialogueControlTrack>("Dialog");
             AudioTrack SpeakTrack = timelineAsset.CreateTrack<AudioTrack>("Speak");
             AudioTrack SoundTrack = timelineAsset.CreateTrack<AudioTrack>("Sound");
+
             #endregion
             #region 音频与嘴型处理
             string audioPath = $@"{DialogueDirectiory}\{SpeakAssetName}{SpeakFormat}";
@@ -74,26 +83,30 @@ namespace Miao
             if (Speak != null)
             {
                 SpeakTrack.CreateClip(Speak);
-                string MouthReferenceAssetsPath = $@"{SpineDirectiory}\{SpineAssetName}\ReferenceAssets";
-                LipTrackExtension.MouthGroup[] group;
-                if (CacheMouthGroups.ContainsKey(MouthReferenceAssetsPath))
+                if (!string.IsNullOrEmpty(SpineAssetName))
                 {
-                    group = CacheMouthGroups[MouthReferenceAssetsPath];
-                }
-                else
-                {
-                    // var MousthAsset = AssetDatabase.LoadAllAssetsAtPath(MouthReferenceAssetsPath);//不能用全域载入，会把所有动画加载进来，但只需要口型资源
-                    string[] guids = AssetDatabase.FindAssets("Mouth", new string[] { MouthReferenceAssetsPath });//嘴型所在位置
-                    group = LipTrackExtension.MouthGroup.ToGroupArrary(guids);//对口型分组
-                    if(group.Length==0)
+                    string MouthReferenceAssetsPath = $@"{SpineDirectiory}\{SpineAssetName}\ReferenceAssets";
+                    LipTrackExtension.MouthGroup[] group;
+                    if (CacheMouthGroups.ContainsKey(MouthReferenceAssetsPath))
                     {
-                        Debug.LogError(SpineAssetName + "未生成任何可用口型，请给spine中制作Mouth动画，动画名称为MouthC{序号}，MouthO{序号}，序号为口型强弱");
-                        return null;
+                        group = CacheMouthGroups[MouthReferenceAssetsPath];
                     }
-                    CacheMouthGroups.Add(MouthReferenceAssetsPath, group);
+                    else
+                    {
+                        // var MousthAsset = AssetDatabase.LoadAllAssetsAtPath(MouthReferenceAssetsPath);//不能用全域载入，会把所有动画加载进来，但只需要口型资源
+                        string[] guids = AssetDatabase.FindAssets("Mouth", new string[] { MouthReferenceAssetsPath });//嘴型所在位置
+                        group = LipTrackExtension.MouthGroup.ToGroupArrary(guids);//对口型分组
+                        if (group.Length == 0)
+                        {
+
+                            Debug.Log(SpineAssetName + "该角色未生成任何可用口型，请给spine角色制作Mouth动画，动画名称为MouthC{序号}，MouthO{序号}，序号为口型强弱");
+
+                        }
+                        CacheMouthGroups.Add(MouthReferenceAssetsPath, group);
+                    }
+                    LipTrackExtension.ProcessLipAmplitudePro(ref spineMouthTrack, group, Speak, SectionLength, ChangeMouthThreshold);
+                    ClipLegth = Speak.length;
                 }
-                LipTrackExtension.ProcessLipAmplitudePro(ref spineMouthTrack, group, Speak, SectionLength, ChangeMouthThreshold);
-                ClipLegth = Speak.length;
             }
             else
             {
