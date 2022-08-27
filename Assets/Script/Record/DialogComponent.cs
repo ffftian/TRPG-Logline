@@ -1,4 +1,5 @@
-﻿using Miao;
+﻿
+using Miao;
 using Spine.Unity;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using UnityEngine.UI;
 using System.Reflection;
+using Spine.Unity.Playables;
 
 /// <summary>
 /// 对话控制器脚本
@@ -111,7 +113,7 @@ public class DialogComponent : MonoBehaviour
             {
                 //Debug.Log($"切换躯体{PlayRoleAnimation.name}");
                 //躯干，表情，嘴型,特殊
-                if (playable.GetGenericBinding(useTimeLineAsset.GetRootTrack(0)) == null)
+                if (useTimeLineAsset.GetRootTrack(0)is SpineAnimationStateTrack && playable.GetGenericBinding(useTimeLineAsset.GetRootTrack(0)) == null)
                 {
                     playable.SetGenericBinding(useTimeLineAsset.GetRootTrack(0), PlayRoleAnimation);
                     playable.SetGenericBinding(useTimeLineAsset.GetRootTrack(1), PlayRoleAnimation);
@@ -123,43 +125,13 @@ public class DialogComponent : MonoBehaviour
                 {
                     TimelineSelectManager.TimelineSelectMethodCall(this, serialData, playable, track);
                 }
-                /////从8开始计算是否有额外对象
-                //if (useTimeLineAsset.rootTrackCount >= 8)
-                //{
-                //    List<string> extension = QQLogSettings.LoadSettings().TimeLineExtension;
-                //    for (int i = 0; i < extension.Count; i++)
-                //    {
-                //        //这里很难用反射实现自定义调用，先手写
-                //        //MethodInfo[] methods = typeof(QQTimelineShowExtend).GetMethods();
-                //        TrackAsset track = useTimeLineAsset.GetRootTrack(i + 7);
-                //        if (extension[i] == track.name)
-                //        {
-                //            switch (extension[i])
-                //            {
-                //                case "CameraFocusRole":
-                //                    playable.SetGenericBinding(useTimeLineAsset.GetRootTrack(i + 7), Camera.main);
-                //                    var clips = useTimeLineAsset.GetRootTrack(i + 7).GetClips();
-                //                    foreach (TimelineClip timelineClip in clips)
-                //                    {
-                //                        ExposedReference<Transform> asExposedReference = new ExposedReference<Transform>();
-                //                        asExposedReference.defaultValue = roleGroup.Find(SerialData.roleName);
-                //                        CameraFocusClip focusClip = (CameraFocusClip)timelineClip.asset;
-                //                        focusClip.focus = asExposedReference;
-                //                        ///默认拥有的类，没准以后会用到。
-                //                        //ControlPlayableAsset controlPlayableAsset;
-                //                    }
-                //                    break;
-                //            }
-                //        }
-                //    }
-                //}
             }
-            else
+            //文本的两种初始赋值处理，对应旁白预设轨道和角色预设轨道
+            if (useTimeLineAsset?.GetRootTrack(0) is DialogueControlTrack)
             {
-                //Debug.Log("<color=blue>用户的Spine不存在</color>");
+                playable.SetGenericBinding(useTimeLineAsset.GetRootTrack(0), dialogue);
             }
-            //文本
-            if (useTimeLineAsset?.GetRootTrack(4) is DialogueControlTrack)
+            else if (useTimeLineAsset?.GetRootTrack(4) is DialogueControlTrack)
             {
                 playable.SetGenericBinding(useTimeLineAsset.GetRootTrack(4), dialogue);
             }
