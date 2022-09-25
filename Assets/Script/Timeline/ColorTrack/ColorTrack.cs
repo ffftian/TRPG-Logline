@@ -1,17 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
-using UnityEngine.UI;
 
 
-namespace Miao
+namespace MiaoTween
 {
     [TrackBindingType(typeof(Color))]
-    [TrackClipType(typeof(ColorBehaviour))]
+    [TrackClipType(typeof(ColorClip))]
     abstract public class ColorTrack : TrackAsset
     {
         public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int inputCount)

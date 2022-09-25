@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-
 using UnityEngine.Playables;
-
-//看MixAndMatchSkinsExample
+/// <summary>
+/// 皮肤与信号管理，适用于需要多重皮肤的Unity对象
+/// </summary>
 public class SkinSignal : MonoBehaviour//, INotificationReceiver
 {
     [SpineSkin] public string choiceClothes;
@@ -36,8 +36,6 @@ public class SkinSignal : MonoBehaviour//, INotificationReceiver
     /////<param name=“notification”>收到的通知。只处理<see cref=“SignalEmitter”/>类型的通知。</param>
     /////<param name=“context”>取决于通知类型的用户定义数据。使用它来传递必要的信息，这些信息会随着每次调用而更改。</param>
     //public void OnNotify(Playable origin, INotification notification, object context)
-    //{
-    //}
 
     protected void Start()
     {
@@ -61,30 +59,6 @@ public class SkinSignal : MonoBehaviour//, INotificationReceiver
         {
             RoleHaveClothesSkin.AddSkin(ClothesSkin2);
         }
-    }
-    /// <summary>
-    /// 设置层级
-    /// </summary>
-    /// <param name="sortingLayerName"></param>
-    public void SetSortingLayer(string sortingLayerName)
-    {
-        MeshRenderer meshRenderer = this.GetComponent<MeshRenderer>();
-        meshRenderer.sortingLayerName = sortingLayerName;
-    }
-    public void ClearTrack(int TrackIndex)
-    {
-        skeletonAnimation.AnimationState.ClearTrack(TrackIndex);
-
-    }
-
-    /// <summary>
-    /// 设置层级
-    /// </summary>
-    /// <param name="OrderLayer"></param>
-    public void SetOrderLayer(int OrderLayer)
-    {
-        MeshRenderer meshRenderer = this.GetComponent<MeshRenderer>();
-        meshRenderer.sortingOrder = OrderLayer;
     }
 
     /// <summary>

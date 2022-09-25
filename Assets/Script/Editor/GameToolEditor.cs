@@ -47,7 +47,7 @@ public class GameToolEditor : EditorWindow
         {
             if (timeScale != newScale)
             {
-                timeScale = timeScale > 100 ? 100 : timeScale;
+                timeScale = timeScale > 10 ? 10 : timeScale;
                 Time.timeScale = newScale;
             }
         }

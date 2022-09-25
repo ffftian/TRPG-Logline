@@ -83,6 +83,7 @@ namespace Miao
             if (Speak != null)
             {
                 SpeakTrack.CreateClip(Speak);
+                ClipLegth = Speak.length;
                 if (!string.IsNullOrEmpty(SpineAssetName))
                 {
                     string MouthReferenceAssetsPath = $@"{SpineDirectiory}\{SpineAssetName}\ReferenceAssets";
@@ -100,12 +101,11 @@ namespace Miao
                         {
 
                             Debug.Log(SpineAssetName + "该角色未生成任何可用口型，请给spine角色制作Mouth动画，动画名称为MouthC{序号}，MouthO{序号}，序号为口型强弱");
-
+                            goto NoMouth;
                         }
                         CacheMouthGroups.Add(MouthReferenceAssetsPath, group);
                     }
                     LipTrackExtension.ProcessLipAmplitudePro(ref spineMouthTrack, group, Speak, SectionLength, ChangeMouthThreshold);
-                    ClipLegth = Speak.length;
                 }
             }
             else
@@ -113,6 +113,7 @@ namespace Miao
                 Debug.Log(timelineName + "不包含音频资源");
             }
             #endregion
+            NoMouth:
             #region 文本处理
             TimelineClip clip = dialogueControlTrack.CreateClip<DialogueControlClip>();
             DialogueControlClip clipResource = (DialogueControlClip)clip.asset;
@@ -137,7 +138,7 @@ namespace Miao
             }
             else
             {
-                Debug.Log("找不到默认的Idle动画");
+                Debug.Log($"{SpineAssetName}没有默认的Idle动画");
             }
             #endregion
             return timelineAsset;

@@ -12,6 +12,7 @@ using Spine.Unity.Playables;
 
 /// <summary>
 /// 对话控制器脚本
+/// 你看到了这个脚本，现在我知道，不止单单是只有我在做时间轴骨骼动画了:)，你肯定能比我这个程序员更好的，加油。
 /// </summary>
 [DisallowMultipleComponent]
 public class DialogComponent : MonoBehaviour
@@ -64,10 +65,26 @@ public class DialogComponent : MonoBehaviour
     }
     public void SetNameText(string name)
     {
+
+#if UNITY_EDITOR
+        if (NameText == null) return;
+#endif
         Color nameColor;
         showComponentSetting.NameColors.TryGetValue(name, out nameColor);
-        NameText.text = name;
-        NameText.color = nameColor == Color.clear ? Color.white : nameColor;
+        string[] sp = name.Split("【");
+       
+        if (sp.Length > 1)//临时的分割显示
+        {
+            NameText.text = "";
+            NameText.text += sp[0];
+            NameText.text += $"\n【{sp[1]}";
+        }
+        else
+        {
+
+            NameText.text = name;
+            NameText.color = nameColor == Color.clear ? Color.white : nameColor;
+        }
     }
 
 
@@ -104,9 +121,9 @@ public class DialogComponent : MonoBehaviour
         playable.playableAsset = useTimeLineAsset;
 #if UNITY_EDITOR
         if (playable.playableAsset == null) return;
-        if (lastID != serialData.fileID)
-        {
-            lastID = serialData.fileID;
+        //if (lastID != serialData.fileID)
+        // {
+        //    lastID = serialData.fileID;
             roles.TryGetValue(serialData.roleName,out var skeletonAnimation);
             SkeletonAnimation PlayRoleAnimation = skeletonAnimation;
             if (PlayRoleAnimation != null)
@@ -123,9 +140,11 @@ public class DialogComponent : MonoBehaviour
                 ///处理额外轨道赋值对象
                 foreach(TrackAsset track in useTimeLineAsset.GetRootTracks())
                 {
-                    TimelineSelectManager.TimelineSelectMethodCall(this, serialData, playable, track);
+                    TimelineSelectManager.TimelineSelectMethodCall(this, serialData, track);
                 }
             }
+        try
+        {
             //文本的两种初始赋值处理，对应旁白预设轨道和角色预设轨道
             if (useTimeLineAsset?.GetRootTrack(0) is DialogueControlTrack)
             {
@@ -135,22 +154,27 @@ public class DialogComponent : MonoBehaviour
             {
                 playable.SetGenericBinding(useTimeLineAsset.GetRootTrack(4), dialogue);
             }
-            #region 另一种写法
-            //foreach (var Line in playable.playableAsset.outputs)
-            //{
-            //    ///播放时绑定到特定角色的Animation
-            //    var trackName = Line.streamName;
-            //    if (trackName.Contains("Spine"))
-            //    {
-            //        playable.SetGenericBinding(Line.sourceObject, PlayRoleAnimation);
-            //    }
-            //    if(trackName.Equals("Dialogue"))
-            //    {
-            //        playable.SetGenericBinding(Line.sourceObject, dialogue);
-            //    }
-            //}
-            #endregion
         }
+        catch(Exception e)
+        {
+            Debug.LogError(e);
+        }
+        #region 另一种写法
+        //foreach (var Line in playable.playableAsset.outputs)
+        //{
+        //    ///播放时绑定到特定角色的Animation
+        //    var trackName = Line.streamName;
+        //    if (trackName.Contains("Spine"))
+        //    {
+        //        playable.SetGenericBinding(Line.sourceObject, PlayRoleAnimation);
+        //    }
+        //    if(trackName.Equals("Dialogue"))
+        //    {
+        //        playable.SetGenericBinding(Line.sourceObject, dialogue);
+        //    }
+        //}
+        #endregion
+        //   }
 #endif
     }
     public void PlayMessage()

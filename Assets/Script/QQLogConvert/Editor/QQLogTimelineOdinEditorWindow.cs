@@ -155,12 +155,14 @@ public class QQLogTimelineOdinEditorWindow : OdinEditorWindow
                 spineAssetName = null;
             }
             TimelineAsset timelineAsset = timelineCreater.CreateMessageTimeLine(messageList[i].fileID, messageList[i].log, spineAssetName, $@"{messageList[i].roleName}\{messageList[i].fileID}",生成轨道高级设置.SectionLength,生成轨道高级设置.ChangeMouthThreshold);
-
-            for(int j =0; j< 额外TimeLine脚本.Count; j++)
+            if (timelineAsset != null)
             {
-                if(额外TimeLine脚本[j].enable)
+                for (int j = 0; j < 额外TimeLine脚本.Count; j++)
                 {
-                    额外TimeLine脚本[j].methodInfo.Invoke(null, new object[] { spineAssetName,timelineAsset });
+                    if (额外TimeLine脚本[j].enable)
+                    {
+                        额外TimeLine脚本[j].methodInfo.Invoke(null, new object[] { spineAssetName, timelineAsset, messageList[i] });
+                    }
                 }
             }
         }

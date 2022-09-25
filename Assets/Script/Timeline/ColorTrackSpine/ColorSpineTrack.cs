@@ -1,17 +1,12 @@
 ﻿using Spine.Unity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
-namespace Miao
+namespace MiaoTween
 {
     [TrackColor(0.2f, 0.2f, 0.2f)]
     [TrackBindingType(typeof(SkeletonAnimation))]
-    [TrackClipType(typeof(ColorBehaviour))]
+    [TrackClipType(typeof(ColorClip))]
     public class ColorSpineTrack : TrackAsset
     {
 

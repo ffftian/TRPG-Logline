@@ -13,11 +13,11 @@ public static class TimelineSelectManager
     public static List<MethodInfo> TimelineSelectMethod;
 
 
-    public static void TimelineSelectMethodCall(DialogComponent dialogComponent,MessageData serialData, PlayableDirector playableDirector, TrackAsset trackAsset)
+    public static void TimelineSelectMethodCall(DialogComponent dialogComponent,MessageData serialData, TrackAsset trackAsset)
     {
         for(int i= 0; i < TimelineSelectMethod.Count; i++)
         {
-            TimelineSelectMethod[i].Invoke(null, new object[] { dialogComponent, serialData, playableDirector, trackAsset });
+            TimelineSelectMethod[i].Invoke(null, new object[] { dialogComponent, serialData, trackAsset });
         }
     }
 

@@ -13,12 +13,12 @@ using UnityEngine.Timeline;
 public static class TimelineSelectExtension
 {
     [TimelineSelectAttribute]
-    public static void CameraFocusRole(DialogComponent dialogComponent, MessageData serialData, PlayableDirector playable, TrackAsset track)
+    public static void CameraFocusRole(DialogComponent dialogComponent, MessageData serialData, TrackAsset track)
     {
         CameraFocusTrack cameraFocusTrack = track as CameraFocusTrack;
-        if(cameraFocusTrack != null)
+        if (cameraFocusTrack != null)
         {
-            playable.SetGenericBinding(track, Camera.main);
+            dialogComponent.playable.SetGenericBinding(track, Camera.main);
             //var clips = cameraFocusTrack.GetClips();
             //foreach (TimelineClip timelineClip in clips)
             //{
@@ -30,6 +30,26 @@ public static class TimelineSelectExtension
             //    //ControlPlayableAsset controlPlayableAsset;
             //}
         }
+    }
+    [TimelineSelectAttribute]
+    public static void RoleDialogue(DialogComponent dialogComponent, MessageData serialData, TrackAsset track)
+    {
+        DialogueTextMeshProTrack dialogueTextMeshProTrack = track as DialogueTextMeshProTrack;
+
+        if (dialogueTextMeshProTrack != null)
+        {
+
+            if (dialogComponent.playable.GetGenericBinding(track) != null)
+            {
+                Transform target =  dialogComponent.roleGroup.Find(serialData.roleName + "TextMeshPro");
+                if (target != null)
+                {
+                    var text = target.GetComponent<TyperDialogTextMeshPro>();
+                    dialogComponent.playable.SetGenericBinding(track, text);
+                }
+            }
+        }
+
     }
 
 }

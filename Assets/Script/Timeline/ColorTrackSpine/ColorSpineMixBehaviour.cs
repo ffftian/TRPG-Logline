@@ -1,15 +1,9 @@
 ﻿using Spine.Unity;
 using Spine.Unity.Prototyping;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.UI;
 
-namespace Miao
+namespace MiaoTween
 {
     public class ColorSpineMixBehaviour : PlayableBehaviour
     {
@@ -42,7 +36,8 @@ namespace Miao
             {
                 if (component != null)
                 {
-                    component.skeleton.SetColor(component.GetComponent<SkeletonColorInitialize>().skeletonColor);
+                    component.skeleton.SetColor(Color.white);
+                    //volume.skeleton.SetColor(volume.GetComponent<SkeletonColorInitialize>().skeletonColor);
                 }
             }
 #endif

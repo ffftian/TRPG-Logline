@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
 
-namespace Miao
+namespace MiaoTween
 {
     public class ColorImageMixBehaviour : PlayableBehaviour
     {
-        private Image component;
+        private Graphic component;
         private Color baseColor;
 
 
@@ -20,7 +15,7 @@ namespace Miao
 
             if (component == null)
             {
-                component = playerData as Image;
+                component = playerData as Graphic;
                 baseColor = component.color;
             }
             int inputCount = playable.GetInputCount();

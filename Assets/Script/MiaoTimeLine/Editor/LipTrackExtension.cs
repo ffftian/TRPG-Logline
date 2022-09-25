@@ -429,6 +429,7 @@ public class LipTrackExtension
         TimelineClip clip = AnimationStateTrack.CreateClip<SpineAnimationStateClip>();//创建一个节拍
         SpineAnimationStateClip data = (SpineAnimationStateClip)clip.asset;//设置节拍为Clip
         data.template.animationReference = reference;//设置资源
+        data.template.dontPauseWithDirector = false;
         clip.displayName = reference.name;
         return clip;
         // clip.duration = reference.Animation.Duration > 0.2f ? reference.Animation.Duration : 0.2f;

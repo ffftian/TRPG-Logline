@@ -6,12 +6,21 @@ using System;
 [Serializable]
 public class DialogueControlClip : PlayableAsset, ITimelineClipAsset
 {
+
+    public override double duration
+    {
+        get
+        {
+            return template.TextLength / template._speed;
+        }
+    }
+
     public DialogueControlBehaviour template = new DialogueControlBehaviour();
 
-    public ClipCaps clipCaps => ClipCaps.All;
+    public ClipCaps clipCaps => ClipCaps.None;
 
     public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
     {
-        return ScriptPlayable<DialogueControlBehaviour>.Create(graph, template);//创建置入一个Playable数据,最后一行还能置入顺序类型。
+        return ScriptPlayable<DialogueControlBehaviour>.Create(graph, template);
     }
 }

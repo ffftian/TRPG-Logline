@@ -37,7 +37,7 @@ using UnityEngine;
 
 //        if (playRecordAsset.RecordAsset[serial][parameterName] == null)
 //        {
-//            playRecordAssetDict[targetObject].RecordAsset[serial].Add(parameterName, value);
+//            playRecordAssetDict[targetObject].RecordAsset[serial].Plus(parameterName, value);
 //        }
 //        else
 //        {
@@ -78,7 +78,7 @@ using UnityEngine;
 ///// </summary>
 ////public struct RTS
 ////{
-////    float Rotation;
+////    float angle;
 ////    Vector3 Position;
 ////    Vector3 Scale;
 ////}

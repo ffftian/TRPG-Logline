@@ -1,12 +1,7 @@
-﻿using Spine.Unity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.Timeline;
-namespace Miao
+namespace MiaoTween
 {
 
     [TrackColor(0.2f, 0.2f, 0.2f)]
@@ -15,7 +10,10 @@ namespace Miao
     public class ColorSpriteTrack : TrackAsset
     {
 
-
+        public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int inputCount)
+        {
+            return ScriptPlayable<ColorSpriteMixBehaviour>.Create(graph, inputCount);
+        }
 
     }
 

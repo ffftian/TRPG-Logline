@@ -35,7 +35,7 @@ namespace Miao
                 {
                     component.sprite = originalSprite;
                 }
-                Debug.Log(1 - (Progress * 2));
+                //Debug.Log(1 - (Progress * 2));
                 component.material.SetFloat(bar, 1 - (Progress * 2));
             }
             else
@@ -46,8 +46,6 @@ namespace Miao
                 }
                 component.material.SetFloat(bar, Mathf.Abs((0.5f - Progress) * 2));
             }
-
-            //component.material.SetFloat(bar);
         }
 
         public override void OnPlayableDestroy(Playable playable)
@@ -59,6 +57,7 @@ namespace Miao
                 if (component != null)
                 {
                     component.sprite = originalSprite;
+                    component.material.SetFloat(bar,1);
                 }
             }
 #endif

@@ -28,7 +28,7 @@ public class TextData
         try
         {
             dateTime = Regex.Match(singleText, "\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2} ").Value;//提取时间
-            Match QQAndName = Regex.Match(singleText, "[\u4E00-\u9FA5A-Za-z0-9_⑨]+\\([0-9]+\\)");
+            Match QQAndName = Regex.Match(singleText, "(?<=(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2} )).+\\([0-9]+\\)");//用0宽断言提取名称
             if (QQAndName.Length == 0)
                 QQAndName = Regex.Match(singleText, "\\([0-9]+\\)");//当没有用户名时，只提取QQ号
 

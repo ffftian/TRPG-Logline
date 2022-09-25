@@ -1,16 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using UnityEngine.UI;
 
-namespace Miao
+namespace MiaoTween
 {
     [TrackColor(0.2f, 0.2f, 0.2f)]
-    [TrackBindingType(typeof(Image))]
+    [TrackBindingType(typeof(Graphic))]
     [TrackClipType(typeof(ColorClip))]
     public class ColorImageTrack : TrackAsset
     {

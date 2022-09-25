@@ -34,8 +34,8 @@ public class RoleRecord : BaseAnmationRecord
     //    {
     //        //try
     //        //{
-    //        AnimationCurve curve = AnimationUtility.GetEditorCurve(animationClip, editorCurveBinding);
-    //        Keyframe frame = curve.keys[curve.length - 1];
+    //        AnimationCurve curveX = AnimationUtility.GetEditorCurve(animationClip, editorCurveBinding);
+    //        Keyframe frame = curveX.keys[curveX.length - 1];
     //        //editorCurveBinding.path 只有空path才证明为角色自己的修正路径
     //        string path = editorCurveBinding.path;//一般就是空
     //        if (!string.IsNullOrEmpty(path))
@@ -43,7 +43,7 @@ public class RoleRecord : BaseAnmationRecord
     //            path += "/";
     //        }
     //        path += editorCurveBinding.propertyName;
-    //        curveValue.Add(path, frame.value);
+    //        curveValue.Plus(path, frame.value);
     //        //Debug.Log($"保存{targetName},{path}成功值为{frame.value}");
     //        //}
     //        //catch(Exception e)

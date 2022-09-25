@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// 适用于Text的打字机效果组件。
+/// </summary>
 public class TyperDialogue : BaseMeshEffect
 {
     //用于记录当前到了哪个字
@@ -21,6 +23,14 @@ public class TyperDialogue : BaseMeshEffect
     //要显示的Text组件
     private Text _text;
     private Text Text { get { if (!_text) { _text = GetComponent<Text>(); } return _text; } }
+
+    public int TextLength
+    {
+        get
+        {
+            return _textString.Length;
+        }
+    }
 
     void Update()
     {
@@ -119,7 +129,10 @@ public class TyperDialogue : BaseMeshEffect
     }
 
     public void Finish() { SetIndex(_textString.Length); }
-
+    /// <summary>
+    /// 读到的序号
+    /// </summary>
+    /// <param name="index"></param>
     public void SetIndex(int index)
     {
         _index = index;

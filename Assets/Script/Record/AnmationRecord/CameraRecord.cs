@@ -32,15 +32,15 @@ public class CameraRecord : BaseAnmationRecord
     //    JObject curveValue = new JObject();
     //    foreach (EditorCurveBinding editorCurveBinding in editorCurveBindings)
     //    {
-    //        AnimationCurve curve = AnimationUtility.GetEditorCurve(animationClip, editorCurveBinding);
-    //        Keyframe frame = curve.keys[curve.length - 1];
+    //        AnimationCurve curveX = AnimationUtility.GetEditorCurve(animationClip, editorCurveBinding);
+    //        Keyframe frame = curveX.keys[curveX.length - 1];
     //        string path = editorCurveBinding.path;
     //        if (!string.IsNullOrEmpty(path))
     //        {
     //            path += "/";
     //        }
     //        path += editorCurveBinding.propertyName;
-    //        curveValue.Add(path, frame.value);
+    //        curveValue.Plus(path, frame.value);
     //        Debug.Log($"保存{path}成功值为{frame.value}序号为{serial}");
     //    }
     //    recordAnmationAsset.RecordValue(serial, curveValue.ToString());
@@ -48,15 +48,15 @@ public class CameraRecord : BaseAnmationRecord
 
     //    //foreach (EditorCurveBinding editorCurveBinding in editorCurveBindings)
     //    //{
-    //    //    AnimationCurve curve = AnimationUtility.GetEditorCurve(animationClip, editorCurveBinding);
-    //    //    Keyframe frame = curve.keys[curve.length - 1];
+    //    //    AnimationCurve curveX = AnimationUtility.GetEditorCurve(animationClip, editorCurveBinding);
+    //    //    Keyframe frame = curveX.keys[curveX.length - 1];
     //    //    string path = editorCurveBinding.path;
     //    //    if (!string.IsNullOrEmpty(path))
     //    //    {
     //    //        path += "/";
     //    //    }
     //    //    path += editorCurveBinding.propertyName;
-    //    //    curveValue.Add(path, frame.value);
+    //    //    curveValue.Plus(path, frame.value);
     //    //    Debug.Log($"保存{path}成功值为{frame.value}序号为{serial}");
     //    //}
     //    //recordAnmationAsset.RecordValue(serial, curveValue.ToString());
