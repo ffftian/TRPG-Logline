@@ -1,14 +1,16 @@
-# TRPG-Logline
-（教程未完成，随时会更新中）
-TRPG-Logline是一款革命性的Unity插件，用于骨骼动画跑团视频的制作演出。
+# TRPG-Logline(中文名：影人演绎/故事现)《当前版本1.1》
+
+（教程未彻底完成，QQ群：398193304，催更以加快进度）
+TRPG-Logline是一款革命性的Unity插件，用于制作2D骨骼动画跑团视频的制作演出，来达到跨时代的效果。
+*实际制作效果可参考：*https://www.bilibili.com/video/BV1Ye4y1b78K/ *这是程序员制作的，如有美术介入可以制作的更好*
 spine运行库版本为4.1，所操作的版本为Unity 2021.3.6f1。  
-本教程建议对Unity基础操作有了解。
+观看本教程建议对Unity基础操作有了解。
 <p align="center">
 <img src="Assets/TRPGEditorSetting/TRPG Logline log.png">
 </p>
 
 # 目录
-- [TRPG-Logline](#trpg-logline)
+- [TRPG-Logline(中文名：影人演绎/故事现)《当前版本1.1》](#trpg-logline中文名影人演绎故事现当前版本11)
 - [目录](#目录)
 - [导入](#导入)
 - [使用](#使用)
