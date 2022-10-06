@@ -20,8 +20,9 @@ public class DialogComponent : MonoBehaviour
     public PlayableDirector playable;
     public TyperDialogue dialogue;
     public int serialPtr;
-    public Transform roleGroup;
-    protected Dictionary<string, SkeletonAnimation> roles = new Dictionary<string, SkeletonAnimation>();
+    //public Transform roleGroup;
+
+    //protected Dictionary<string, SkeletonAnimation> roles = new Dictionary<string, SkeletonAnimation>();
     private string lastID = string.Empty;
     public Text NameText;
     [Sirenix.Serialization.OdinSerialize]
@@ -30,6 +31,7 @@ public class DialogComponent : MonoBehaviour
 
     public QQMessageAsset messageAsset;
     public TimelineAsset useTimeLineAsset;
+    public List<SkeletonAnimation> roles = new List<SkeletonAnimation>();
 #if UNITY_EDITOR
     public event Action<TimelineAsset> OnTimeLineLeave;
     /// <summary>
@@ -42,18 +44,18 @@ public class DialogComponent : MonoBehaviour
     }
 #endif
 
-    public void OnValidate()
-    {
-        if (roleGroup != null)
-        {
-            roles.Clear();
-            for (int i = 0; i < roleGroup.childCount; i++)
-            {
-                Transform roleChild = roleGroup.GetChild(i);
-                roles.Add(roleChild.name, roleChild.GetComponent<SkeletonAnimation>());
-            }
-        }
-    }
+    //public void OnValidate()
+    //{
+    //    if (roleGroup != null)
+    //    {
+    //        roles.Clear();
+    //        for (int i = 0; i < roleGroup.childCount; i++)
+    //        {
+    //            Transform roleChild = roleGroup.GetChild(i);
+    //            roles.Add(roleChild.name, roleChild.GetComponent<SkeletonAnimation>());
+    //        }
+    //    }
+    //}
 
     public void Start()
     {
@@ -72,7 +74,7 @@ public class DialogComponent : MonoBehaviour
         Color nameColor;
         showComponentSetting.NameColors.TryGetValue(name, out nameColor);
         string[] sp = name.Split("【");
-       
+
         if (sp.Length > 1)//临时的分割显示
         {
             NameText.text = "";
@@ -124,25 +126,32 @@ public class DialogComponent : MonoBehaviour
         //if (lastID != serialData.fileID)
         // {
         //    lastID = serialData.fileID;
-            roles.TryGetValue(serialData.roleName,out var skeletonAnimation);
-            SkeletonAnimation PlayRoleAnimation = skeletonAnimation;
-            if (PlayRoleAnimation != null)
+        //roles.TryGetValue(serialData.roleName,out var skeletonAnimation);
+        SkeletonAnimation PlayRoleAnimation = roles.Find(a =>
+        {
+            if (a != null)
             {
-                //Debug.Log($"切换躯体{PlayRoleAnimation.name}");
-                //躯干，表情，嘴型,特殊
-                if (useTimeLineAsset.GetRootTrack(0)is SpineAnimationStateTrack && playable.GetGenericBinding(useTimeLineAsset.GetRootTrack(0)) == null)
-                {
-                    playable.SetGenericBinding(useTimeLineAsset.GetRootTrack(0), PlayRoleAnimation);
-                    playable.SetGenericBinding(useTimeLineAsset.GetRootTrack(1), PlayRoleAnimation);
-                    playable.SetGenericBinding(useTimeLineAsset.GetRootTrack(2), PlayRoleAnimation);
-                    playable.SetGenericBinding(useTimeLineAsset.GetRootTrack(3), PlayRoleAnimation);
-                }
-                ///处理额外轨道赋值对象
-                foreach(TrackAsset track in useTimeLineAsset.GetRootTracks())
-                {
-                    TimelineSelectManager.TimelineSelectMethodCall(this, serialData, track);
-                }
+                return a.name == serialData.roleName;
             }
+            return false;
+            });
+        if (PlayRoleAnimation != null)
+        {
+            //Debug.Log($"切换躯体{PlayRoleAnimation.name}");
+            //躯干，表情，嘴型,特殊
+            if (useTimeLineAsset.GetRootTrack(0) is SpineAnimationStateTrack && playable.GetGenericBinding(useTimeLineAsset.GetRootTrack(0)) == null)
+            {
+                playable.SetGenericBinding(useTimeLineAsset.GetRootTrack(0), PlayRoleAnimation);
+                playable.SetGenericBinding(useTimeLineAsset.GetRootTrack(1), PlayRoleAnimation);
+                playable.SetGenericBinding(useTimeLineAsset.GetRootTrack(2), PlayRoleAnimation);
+                playable.SetGenericBinding(useTimeLineAsset.GetRootTrack(3), PlayRoleAnimation);
+            }
+            ///处理额外轨道赋值对象
+            foreach (TrackAsset track in useTimeLineAsset.GetRootTracks())
+            {
+                TimelineSelectManager.TimelineSelectMethodCall(this, serialData, track);
+            }
+        }
         try
         {
             //文本的两种初始赋值处理，对应旁白预设轨道和角色预设轨道
@@ -155,7 +164,7 @@ public class DialogComponent : MonoBehaviour
                 playable.SetGenericBinding(useTimeLineAsset.GetRootTrack(4), dialogue);
             }
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             Debug.LogError(e);
         }

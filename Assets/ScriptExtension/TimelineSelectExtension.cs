@@ -41,7 +41,14 @@ public static class TimelineSelectExtension
 
             if (dialogComponent.playable.GetGenericBinding(track) != null)
             {
-                Transform target =  dialogComponent.roleGroup.Find(serialData.roleName + "TextMeshPro");
+                //Transform target = dialogComponent.roles.Find((a) => a.name + "TextMeshPro");
+                Transform target = null;
+                for (int i=0;i< dialogComponent.roles.Count;i++)
+                {
+                    target = dialogComponent.roles[i].transform.Find(serialData.roleName + "TextMeshPro");
+                }
+
+                //Transform target =  dialogComponent.roleGroup.Find(serialData.roleName + "TextMeshPro");
                 if (target != null)
                 {
                     var text = target.GetComponent<TyperDialogTextMeshPro>();
